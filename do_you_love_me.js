@@ -5,7 +5,7 @@ const heartLoader = document.querySelector(".cssload-main");
 const yesBtn = document.querySelector(".js-yes-btn");
 const noBtn = document.querySelector(".js-no-btn");
 
-// /change the postion of no button
+/* /change the postion of no button
 noBtn.addEventListener("mouseover", () => {
   const newX = Math.floor(Math.random() * questionContainer.offsetWidth);
   const newY = Math.floor(Math.random() * questionContainer.offsetWidth);
@@ -13,20 +13,35 @@ noBtn.addEventListener("mouseover", () => {
   noBtn.style.left = `${newX}px`;
   noBtn.style.top = `${newY}px`;
 });
-
-/* yes button functionality
-yesBtn.addEventListener("click", () => {
-  questionContainer.style.display = "none";
-  heartLoader.style.display = "inherit";
-
-  setTimeout(() => {
-    heartLoader.style.display = "none";
-    resultContainer.style.display = "inherit";
-    // Only keep this line if you are using a <video> tag
-    // gifResult.play();
-  }, 3000);
-});
 */
+let yesScale = 1; 
+
+// 1. "No" button teleportation (Hover only moves it, NO growth here)
+noBtn.addEventListener("mouseover", () => {
+  // Calculate max available width/height so it stays inside the container
+  const maxX = questionContainer.clientWidth - noBtn.offsetWidth;
+  const maxY = questionContainer.clientHeight - noBtn.offsetHeight;
+
+  const newX = Math.floor(Math.random() * maxX);
+  const newY = Math.floor(Math.random() * maxY);
+
+  noBtn.style.left = `${newX}px`;
+  noBtn.style.top = `${newY}px`;
+});
+
+// 2. "Yes" button growth (Only happens on actual CLICK)
+noBtn.addEventListener("click", () => {
+  yesScale += 0.4; // Grows by 40% each click
+  yesBtn.style.transform = `scale(${yesScale})`;
+  
+  // Optional: Change the text to be more persuasive
+  if (yesScale > 1.5) {
+    yesBtn.innerHTML = "你确定吗？🥺"; 
+  }
+  if (yesScale > 2.5) {
+    yesBtn.innerHTML = "选我！选我！💖";
+  }
+});
 
 yesBtn.addEventListener("click", async () => {
   // 1. Start the visual transitions

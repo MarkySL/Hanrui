@@ -28,12 +28,22 @@ body {
   left: 50%;
   transition: 0.2s;
 }
-.tenor-gif-embed {
-  height: 15rem;
-  pointer-events: none;
-  border-radius: 10px;
+
+.main-gif-container {
+  height: 15rem; /* Matches your previous height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-bottom: 3rem;
 }
+
+.main-gif {
+  max-height: 100%;
+  max-width: 100%;
+  border-radius: 10px;
+  pointer-events: none; /* Prevents users from dragging the gif */
+}
+
 .question {
   font-size: 3.5rem;
   margin-bottom: 1rem;
@@ -56,6 +66,10 @@ body {
   color: white;
   transform: scale(1.05);
   box-shadow: 0px 4px 15px rgba(255, 107, 129, 0.5);
+  transform-origin: center; /* Ensures growth stays centered */
+  transition: top 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+              left 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+              transform 0.2s ease-out;
 }
 .btn:hover {
   background-color: #ffa4b1;
