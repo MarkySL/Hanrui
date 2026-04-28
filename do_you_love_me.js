@@ -17,7 +17,7 @@ noBtn.addEventListener("mouseover", () => {
 let yesScale = 1;
 let noClickCount = 0; // Counter for No button clicks
 
-/* Disable the No Button Teleportation
+/*
 // 1. "No" button teleportation (Hover only moves it, NO growth here)
 noBtn.addEventListener("mouseover", () => {
   // Calculate max available width/height so it stays inside the container
@@ -62,7 +62,7 @@ yesBtn.addEventListener("click", async () => {
 
   // Add the No button click count
   formData.append("No_Button_Clicks", noClickCount);
-  
+
   // 3. Send the "log" to Web3Forms in the background
   try {
     await fetch("https://api.web3forms.com/submit", {
