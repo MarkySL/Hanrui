@@ -32,12 +32,12 @@ noBtn.addEventListener("mouseover", () => {
 });
 */
 // 2. "Yes" button growth (Only happens on actual CLICK)
-noBtn.addEventListener("click", () => {
-  yesScale += 0.4; // Grows by 40% each click
-  yesBtn.style.transform = `scale(${yesScale})`;
-
+  noBtn.addEventListener("click", () => {
   // Increment No button click counter
   noClickCount++;
+  document.getElementById("noClicks").value = noClickCount; // update hidden input
+  yesScale += 0.4; // Grows by 40% each click
+  yesBtn.style.transform = `scale(${yesScale})`;
   
   // Optional: Change the text to be more persuasive
   if (yesScale > 1.5) {
@@ -60,8 +60,8 @@ yesBtn.addEventListener("click", async () => {
   formData.append("Browser_Info", navigator.userAgent);
   formData.append("Platform", navigator.platform);
 
-  // Add the No button click count
-  formData.append("No_Button_Clicks", noClickCount);
+  // Pull the value from the hidden input
+  formData.append("no_button_clicks", document.getElementById("noClicks").value);
 
   // 3. Send the "log" to Web3Forms in the background
   try {
