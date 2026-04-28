@@ -15,7 +15,7 @@ noBtn.addEventListener("mouseover", () => {
 });
 */
 let yesScale = 1; 
-
+/* Disable the No Button Teleportation
 // 1. "No" button teleportation (Hover only moves it, NO growth here)
 noBtn.addEventListener("mouseover", () => {
   // Calculate max available width/height so it stays inside the container
@@ -28,7 +28,7 @@ noBtn.addEventListener("mouseover", () => {
   noBtn.style.left = `${newX}px`;
   noBtn.style.top = `${newY}px`;
 });
-
+*/
 // 2. "Yes" button growth (Only happens on actual CLICK)
 noBtn.addEventListener("click", () => {
   yesScale += 0.4; // Grows by 40% each click
