@@ -86,13 +86,6 @@ body {
 .no-btn {
   left: 54%;
 }
-/*It disables the hovering feature*/
-.no-btn:hover {
-  /* Do nothing */
-  background-color: #ff6b81; /* same as default */
-  transform: scale(1.05);    /* same as default */
-  box-shadow: 0px 4px 15px rgba(255, 107, 129, 0.5);
-}
 
 /* This makes the container a reference point for the children */
 .result-container {
