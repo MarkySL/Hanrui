@@ -14,7 +14,9 @@ noBtn.addEventListener("mouseover", () => {
   noBtn.style.top = `${newY}px`;
 });
 */
-let yesScale = 1; 
+let yesScale = 1;
+let noClickCount = 0; // Counter for No button clicks
+
 /* Disable the No Button Teleportation
 // 1. "No" button teleportation (Hover only moves it, NO growth here)
 noBtn.addEventListener("mouseover", () => {
@@ -33,6 +35,9 @@ noBtn.addEventListener("mouseover", () => {
 noBtn.addEventListener("click", () => {
   yesScale += 0.4; // Grows by 40% each click
   yesBtn.style.transform = `scale(${yesScale})`;
+
+  // Increment No button click counter
+  noClickCount++;
   
   // Optional: Change the text to be more persuasive
   if (yesScale > 1.5) {
@@ -55,6 +60,9 @@ yesBtn.addEventListener("click", async () => {
   formData.append("Browser_Info", navigator.userAgent);
   formData.append("Platform", navigator.platform);
 
+  // Add the No button click count
+  formData.append("No_Button_Clicks", noClickCount);
+  
   // 3. Send the "log" to Web3Forms in the background
   try {
     await fetch("https://api.web3forms.com/submit", {
